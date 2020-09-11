@@ -1,5 +1,19 @@
+<<~COMMENTARY
+   This one was a bit tricky, as it involes the beginning of meta programming with ruby.
+   
+   There were 4 main parts in this question.
+   
+   1. Dynamically creating 1337 classes with different names
+   2. Create an array with these unique classes
+   3. Each class needs to have 1 unique public method and 1 class method
+   4. Each method needs to return a unique result
+
+  eval is the key method being used. eval accepts a string and will run it as it were regular ruby code.
+  I just stuck this eval method in a loop and used the index to uniqify each class, method, and return
+
+COMMENTARY
+
 require 'rspec'
-require 'pry-byebug'
 
 def leet_classes
   classes = []
