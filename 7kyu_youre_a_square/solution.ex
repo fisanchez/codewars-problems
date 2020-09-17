@@ -1,7 +1,7 @@
 ~s"""
 My inital thought was to square the number and check if it's a whole number. If it is then it's a perfect square, easy peasy. BUT I had an issue passing the square root value to the remainder function.
 
-  I'm sure it has something to do with passing a float value, but I didn't want to spend too much time on this
+  I'm sure it has something to do with passing a float value, but I didn't want to spend too much time on this. I solved the ruby version this way, look there for an example.
   :math.sqrt(n) |> rem(1)
   > ** (MatchError) no match of right hand side value: []
 
