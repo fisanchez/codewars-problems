@@ -36,8 +36,13 @@ class Divisor
     end
     # Sorting low to high
     pair_list.sort_by! { |a| a[:count] }
-    answer = pair_list.last
-    [answer[:count], [answer[:num]]]
+    high_div_count = pair_list.last[:count]
+
+    highest_counts = pair_list.each_with_object([]) do |pair, arr|
+      arr << pair[:num] if pair[:count] == high_div_count
+    end
+
+    [pair_list.last[:count], highest_counts.sort]
   end
 
   def self.divisor_count(number)
@@ -54,9 +59,14 @@ describe 'Divisor' do
     [66, 36, 49, 40, 73, 12, 77, 78, 76, 8, 50,
      20, 85, 22, 24, 68, 26, 59, 92, 93, 30]
   end
+  let(:arr2) do
+    [5, 396, 397, 145, 274, 286, 159, 422, 169, 44, 303,
+     433, 310, 450, 324, 326, 91, 226, 229, 233, 106, 237, 499, 126]
+  end
 
   it 'returns array of correct number of number' do
     expect(Divisor.proc_arrInt(arr1)).to eq([21, 2, [9, [36]]])
+    expect(Divisor.proc_arrInt(arr2)).to eq([24, 6, [18, [396, 450]]])
   end
   describe '.list_count' do
     it 'returns correct number of numbers received' do
@@ -82,8 +92,11 @@ describe 'Divisor' do
     end
   end
   describe '.highest_divisors' do
-    it 'returns 9 divisors from 36]' do
+    it 'returns 9 divisors from 36' do
       expect(Divisor.highest_divisors(arr1)).to eq([9, [36]])
+    end
+    it 'returns divisor count of 18 with two tied numbers: 396 and 450' do
+      expect(Divisor.highest_divisors(arr2)).to eq([18, [396, 450]])
     end
   end
 end
