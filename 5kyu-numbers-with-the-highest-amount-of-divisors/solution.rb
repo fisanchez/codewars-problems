@@ -3,9 +3,10 @@ require 'pry-byebug'
 
 class Divisor
   def self.proc_arrInt(list)
-    num_count = list_count(list)
-    prime_count = prime_count(list)
-    divisor_count = highest_divisors(list)
+    sorted_list = list.sort
+    num_count = list_count(sorted_list)
+    prime_count = prime_count(sorted_list)
+    divisor_count = highest_divisors(sorted_list)
     [num_count, prime_count, divisor_count]
   end
 
@@ -46,9 +47,17 @@ class Divisor
   end
 
   def self.divisor_count(number)
+    end_value = Math.sqrt(number)
     divisors = []
-    (1..number).each do |n|
-      divisors << n if (number % n).zero?
+    (1..end_value).each do |n|
+      if (number % n).zero?
+        if (number / n) == n
+          divisors << n
+        else
+          divisors << n
+          divisors << number / n
+        end
+      end
     end
     divisors.count
   end
