@@ -59,6 +59,7 @@ class Divisor
         end
       end
     end
+    puts divisors.sort!
     divisors.count
   end
 end

@@ -13,8 +13,11 @@ Integer.digits():
 Enum.sum():
   Enumerates through an array and adds each integer and return. Example `Enum.sum([1,2,3]) -> 6`
 """
+
 defmodule Kata do 
   def sum_digits(number) do 
     number |> abs() |> Integer.digits() |> Enum.sum()
   end
 end
+
+

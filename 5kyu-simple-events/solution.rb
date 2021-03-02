@@ -1,27 +1,28 @@
 require 'rspec'
 
 class Event
-  def self.subscribe; end
+  def subscribe; end
 
-  def self.unsubscribe; end
+  def unsubscribe; end
 
-  def self.emit; end
+  def emit; end
 end
 
 describe Event do
+  let(:event) { Event.new }
   context '.subscribe' do
     it 'should exist' do
-      Event.method_defined? :subscribe
+      event.respond_to? :subscribe
     end
   end
   context '.unsubscribe' do
     it 'should exist' do
-      Event.method_defined? :unsubscribe
+      event.respond_to? :unsubscribe
     end
   end
   context '.emit' do
     it 'should exist' do
-      Event.method_defined? :emit
+      event.respond_to? :emit
     end
   end
 end
